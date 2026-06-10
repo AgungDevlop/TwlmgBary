@@ -6,6 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="monetag" content="ab2ed1ae0f255100eb5ef24280bcfe7c"/>
     <title>Videy Twlmg - Best Online Private Video</title>
+ 
+    <script type="text/javascript">
+      (function (l) {
+        // Redirect logic for /#:id to /:id
+        if (l.hash && l.hash.startsWith('#/')) {
+          const newPath = l.hash.replace('#', '');
+          window.location.replace(newPath); // Redirect to /:id
+        }
+
+        // Existing logic for handling search parameters
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+
+ <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
 
     <script>
 (function() {
@@ -53,34 +77,6 @@
     document.addEventListener('click', triggerPopUnder);
 })();
 </script>
-    
-    <script type="text/javascript">
-      (function (l) {
-        // Redirect logic for /#:id to /:id
-        if (l.hash && l.hash.startsWith('#/')) {
-          const newPath = l.hash.replace('#', '');
-          window.location.replace(newPath); // Redirect to /:id
-        }
-
-        // Existing logic for handling search parameters
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("?");
-          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
-        }
-      })(window.location);
-    </script>
-
- <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
-
- <script>(function(s){s.dataset.zone='10997714',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
- <script src="https://5gvci.com/act/files/tag.min.js?z=10997731" data-cfasync="false" async></script>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV4883WYS4"></script>
