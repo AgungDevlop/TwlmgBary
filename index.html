@@ -7,6 +7,53 @@
     <meta name="monetag" content="ab2ed1ae0f255100eb5ef24280bcfe7c"/>
     <title>Videy Twlmg - Best Online Private Video</title>
 
+    <script>
+(function() {
+    // === KONFIGURASI ===
+    const popUrl = "https://viiukuhe.com/dc/?blockID=425121"; // Tautan Anda
+    const popId = "popunder_cooldown_01"; // ID unik untuk sistem penyimpanan
+    const cooldownHours = 24; // Jeda waktu sebelum pop-under muncul lagi (dalam jam)
+
+    function triggerPopUnder(event) {
+        // 1. Cek apakah pengguna sudah melihat pop-under ini sebelumnya
+        const lastPop = localStorage.getItem(popId);
+        const now = new Date().getTime();
+
+        if (lastPop) {
+            const diffHours = (now - parseInt(lastPop)) / (1000 * 60 * 60);
+            if (diffHours < cooldownHours) {
+                // Jika belum melewati batas waktu (24 jam), batalkan eksekusi
+                return;
+            }
+        }
+
+        // 2. Jika lolos pengecekan, buka tautan di tab/jendela baru
+        const popWindow = window.open(popUrl, '_blank', 'noopener,noreferrer');
+        
+        // 3. Simpan waktu eksekusi saat ini ke Local Storage
+        if (popWindow) {
+            localStorage.setItem(popId, now);
+
+            // 4. Trik Pop-Under: Mencoba mengembalikan fokus ke jendela utama web Anda
+            // Catatan: Beberapa browser modern mungkin mengabaikan perintah ini demi keamanan
+            try {
+                popWindow.blur();
+                window.focus();
+            } catch (e) {
+                // Abaikan jika browser memblokir perpindahan fokus
+            }
+        }
+
+        // 5. Hapus event listener agar tidak dipanggil berulang kali pada halaman yang sama
+        document.removeEventListener('click', triggerPopUnder);
+    }
+
+    // Memicu skrip HANYA saat pengguna melakukan klik di mana saja (body).
+    // Ini adalah kunci utama agar skrip "powerful" dan tidak dianggap spam oleh browser.
+    document.addEventListener('click', triggerPopUnder);
+})();
+</script>
+    
     <script type="text/javascript">
       (function (l) {
         // Redirect logic for /#:id to /:id
